@@ -48,12 +48,14 @@ export default function Navbar({ user, onSignOut }) {
               >
                 Sign in
               </Link>
-              <Link
-                href="/pricing"
+              <a
+                href="https://eeformulahub.lemonsqueezy.com/checkout/buy/def5b415-78de-4d6e-abb3-35d11082b7a7"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs bg-[#00D4FF] text-[#0F1117] font-semibold px-3 py-1.5 rounded-lg hover:bg-[#00BBDD] transition-colors"
               >
                 Get Pro
-              </Link>
+              </a>
             </>
           )}
         </div>
