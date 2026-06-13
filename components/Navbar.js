@@ -20,7 +20,7 @@ export default function Navbar({ user, onSignOut }) {
           <Link href="/calculators" className="text-sm text-gray-400 hover:text-white transition-colors">
             Calculators
           </Link>
-          <Link href="/calculators" className="text-sm text-gray-400 hover:text-white transition-colors">
+          <Link href="/formulas" className="text-sm text-gray-400 hover:text-white transition-colors">
             Formulas
           </Link>
           <Link href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">

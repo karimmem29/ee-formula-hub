@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Navbar from '../components/Navbar'
 
 const FREE_FEATURES = [
@@ -21,9 +22,18 @@ const PRO_FEATURES = [
 ]
 
 export default function Pricing() {
-  const handleUpgrade = async () => {
-    // Lemon Squeezy checkout — replace URL with your real checkout link
-    window.open('https://your-store.lemonsqueezy.com/checkout/buy/YOUR_PRODUCT_ID', '_blank')
+  const router = useRouter()
+
+  const handleUpgrade = () => {
+    // Build the Lemon Squeezy checkout from env vars when configured.
+    const store = process.env.NEXT_PUBLIC_LEMONSQUEEZY_STORE_ID
+    const product = process.env.NEXT_PUBLIC_LEMONSQUEEZY_PRODUCT_ID
+    if (store && product) {
+      window.open(`https://${store}.lemonsqueezy.com/checkout/buy/${product}`, '_blank')
+      return
+    }
+    // No checkout configured yet — send the user to sign up instead of a dead link.
+    router.push('/auth')
   }
 
   return (
