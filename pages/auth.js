@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Navbar from '../components/Navbar'
+import { supabase } from '../lib/supabase'
+import { useAuth } from '../lib/AuthContext'
 
 export default function Auth() {
+  const router = useRouter()
+  const { user } = useAuth()
   const [mode, setMode] = useState('signin') // 'signin' | 'signup'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,25 +15,32 @@ export default function Auth() {
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
 
+  // Already signed in? Send them to the calculators.
+  useEffect(() => {
+    if (user) router.replace('/calculators')
+  }, [user, router])
+
   const handleSubmit = async () => {
     if (!email || !password) { setError('Enter your email and password'); return }
     setLoading(true)
     setError('')
     setMessage('')
 
-    // TODO: connect Supabase auth here
-    // import { supabase } from '../lib/supabase'
-    // const { error } = mode === 'signup'
-    //   ? await supabase.auth.signUp({ email, password })
-    //   : await supabase.auth.signInWithPassword({ email, password })
-
-    // Placeholder for now
-    setTimeout(() => {
+    try {
+      if (mode === 'signup') {
+        const { error } = await supabase.auth.signUp({ email, password })
+        if (error) throw error
+        setMessage('Account created! Check your email to confirm, then sign in.')
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        if (error) throw error
+        router.push('/calculators')
+      }
+    } catch (e) {
+      setError(e.message || 'Something went wrong — please try again')
+    } finally {
       setLoading(false)
-      setMessage(mode === 'signup'
-        ? 'Account created! Check your email to verify.'
-        : 'Signed in! (Connect Supabase to enable real auth)')
-    }, 800)
+    }
   }
 
   return (

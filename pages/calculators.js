@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import FormulaCard from '../components/FormulaCard'
 import AiExplainModal from '../components/AiExplainModal'
 import { categories, formulas } from '../data/formulas'
+import { useAuth } from '../lib/AuthContext'
 
 export default function Calculators() {
   const router = useRouter()
@@ -12,8 +13,9 @@ export default function Calculators() {
   const [search, setSearch] = useState('')
   const [selectedFormula, setSelectedFormula] = useState(null)
 
-  // For now isPro = false (connect Supabase later to check real subscription)
-  const isPro = false
+  // Pro status comes from the signed-in user's profile (Supabase). Defaults to
+  // false while loading and for anonymous users.
+  const { isPro } = useAuth()
 
   const filtered = formulas.filter(f => {
     const matchesCat = activeCat === 'all' || f.category === activeCat

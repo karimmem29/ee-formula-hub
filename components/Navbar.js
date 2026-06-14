@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import { useState } from 'react'
+import { useAuth } from '../lib/AuthContext'
 
-export default function Navbar({ user, onSignOut }) {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { user, signOut } = useAuth()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#2A2D3A] bg-[#0F1117]/90 backdrop-blur-md">
@@ -34,7 +36,7 @@ export default function Navbar({ user, onSignOut }) {
             <>
               <span className="text-xs text-gray-500 hidden md:block">{user.email}</span>
               <button
-                onClick={onSignOut}
+                onClick={signOut}
                 className="text-xs text-gray-400 hover:text-white border border-[#2A2D3A] px-3 py-1.5 rounded-lg transition-colors"
               >
                 Sign out
