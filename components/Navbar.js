@@ -51,7 +51,7 @@ export default function Navbar() {
                 Sign in
               </Link>
               <a
-                href="https://eeformulahub.lemonsqueezy.com/checkout/buy/def5b415-78de-4d6e-abb3-35d11082b7a7"
+                href="https://eeformulahub.lemonsqueezy.com/checkout/buy/144ab85d-74ee-4e14-8524-3f11b2153e8b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs bg-[#00D4FF] text-[#0F1117] font-semibold px-3 py-1.5 rounded-lg hover:bg-[#00BBDD] transition-colors"
