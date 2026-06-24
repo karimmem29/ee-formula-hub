@@ -20,7 +20,7 @@ const PRO_FEATURES = [
   'Priority support from the developer',
 ]
 
-const CHECKOUT_URL = 'https://eeformulahub.lemonsqueezy.com/checkout/buy/def5b415-78de-4d6e-abb3-35d11082b7a7'
+const CHECKOUT_URL = 'https://eeformulahub.lemonsqueezy.com/checkout/buy/144ab85d-74ee-4e14-8524-3f11b2153e8b'
 
 export default function Pricing() {
   const handleUpgrade = () => {
