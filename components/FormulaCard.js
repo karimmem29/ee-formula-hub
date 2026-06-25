@@ -162,7 +162,26 @@ export default function FormulaCard({ formula, isPro, onAiExplain }) {
               <span>✦</span>
               <span>{isPro ? 'AI Explain this formula' : 'AI Explain (Pro)'}</span>
             </button>
-          )}
+            )}
+         {formula.worked_example && (
+        
+  <div className="mt-3 p-3 bg-[#0F1117] border border-[#2A2D3A] rounded-lg">
+    <p className="text-xs text-gray-500 mb-2 font-medium">📝 Worked Example</p>
+    <p className="text-xs text-gray-400 mb-2">{formula.worked_example.problem}</p>
+    <div className="font-mono text-xs text-[#00D4FF] flex flex-col gap-1">
+      {formula.worked_example.steps.map((step, i) => (
+        <p key={i}>{step}</p>
+      ))}
+    </div>
+  </div>
+)}
+
+{formula.faq && (
+  <div className="mt-2 p-3 bg-[#00D4FF08] border border-[#00D4FF20] rounded-lg">
+    <p className="text-xs text-gray-500 mb-1 font-medium">💡 Good to know</p>
+    <p className="text-xs text-gray-400">{formula.faq}</p>
+  </div>
+)} 
         </>
       )}
     </div>

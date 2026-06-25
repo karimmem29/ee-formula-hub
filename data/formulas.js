@@ -38,7 +38,12 @@ export const formulas = [
     },
     tags: ['basic', 'dc', 'fundamental'],
     pro: false,
+  worked_example: {
+    problem: "A circuit has 2A flowing through a 10Ω resistor. Find the voltage.",
+    steps: ["V = I × R", "V = 2 × 10", "V = 20V"]
   },
+  faq: "Ohm's Law only holds for ohmic (linear) components like standard resistors. It breaks down for non-linear devices like diodes or transistors.",
+},
   {
     id: 'power-dc',
     category: 'dc',
@@ -59,7 +64,11 @@ export const formulas = [
     },
     tags: ['dc', 'power'],
     pro: false,
+  worked_example: {
+    problem: "A device draws 3A at 12V. Find the power consumed.",
+    steps: ["P = V × I", "P = 12 × 3", "P = 36W"]
   },
+  faq: "All three power formulas (P=VI, P=I²R, P=V²/R) give the same answer for a resistive load — pick whichever one uses the variables you already know.",},
   {
     id: 'voltage-divider',
     category: 'dc',
@@ -80,7 +89,11 @@ export const formulas = [
     },
     tags: ['dc', 'resistor'],
     pro: false,
+  worked_example: {
+    problem: "Vin = 12V, R1 = 1kΩ, R2 = 2kΩ. Find Vout.",
+    steps: ["Vout = Vin × R2 / (R1 + R2)", "Vout = 12 × 2000 / (1000 + 2000)", "Vout = 24000 / 3000 = 8V"]
   },
+  faq: "Voltage dividers only stay accurate when the load resistance is much larger than R2. If the load draws significant current, it changes the actual output voltage — this is called the 'loading effect'.",},
   {
     id: 'resistors-series',
     category: 'dc',
@@ -114,7 +127,11 @@ export const formulas = [
     },
     tags: ['dc', 'resistor', 'parallel'],
     pro: false,
+  worked_example: {
+    problem: "Two resistors, 100Ω and 200Ω, are in parallel. Find the equivalent resistance.",
+    steps: ["R_total = (R1 × R2) / (R1 + R2)", "R_total = (100 × 200) / (100 + 200)", "R_total = 20000 / 300 ≈ 66.7Ω"]
   },
+  faq: "The equivalent resistance of resistors in parallel is always smaller than the smallest individual resistor — adding more parallel paths always reduces total resistance, never increases it.",},
   {
     id: 'capacitor-energy',
     category: 'dc',
@@ -133,7 +150,11 @@ export const formulas = [
     },
     tags: ['dc', 'capacitor', 'energy'],
     pro: false,
+  worked_example: {
+    problem: "A 100µF capacitor is charged to 50V. Find the energy stored.",
+    steps: ["E = ½ × C × V²", "E = 0.5 × 0.0001 × 50²", "E = 0.5 × 0.0001 × 2500 = 0.125 J"]
   },
+  faq: "Capacitor energy increases with the square of voltage, not linearly. Doubling the voltage quadruples the stored energy, not just doubles it.",},
   {
     id: 'inductor-energy',
     category: 'dc',
@@ -251,7 +272,11 @@ export const formulas = [
     },
     tags: ['filter', 'rc', 'frequency'],
     pro: false,
+  worked_example: {
+    problem: "R = 1kΩ, C = 1µF. Find the cutoff frequency.",
+    steps: ["fc = 1 / (2π × R × C)", "fc = 1 / (2π × 1000 × 0.000001)", "fc = 1 / 0.00628 ≈ 159 Hz"]
   },
+  faq: "At the cutoff frequency, the output signal drops to 70.7% (-3dB) of its input amplitude — this is the standard point engineers use to define a filter's bandwidth.",},
   {
     id: 'rl-cutoff',
     category: 'filters',
@@ -329,7 +354,11 @@ export const formulas = [
     },
     tags: ['opamp', 'gain', 'inverting'],
     pro: false,
+  worked_example: {
+    problem: "An inverting amplifier has Rf = 10kΩ and Rin = 2kΩ. Find the voltage gain.",
+    steps: ["Av = -Rf / Rin", "Av = -10000 / 2000", "Av = -5 (signal inverted and amplified 5×)"]
   },
+  faq: "The negative sign means the output is flipped 180° in phase compared to the input — the magnitude is amplified, but the polarity is reversed.",},
   {
     id: 'opamp-noninverting',
     category: 'opamp',
@@ -503,7 +532,11 @@ export const formulas = [
     },
     tags: ['power', 'three-phase'],
     pro: false,
+  worked_example: {
+    problem: "A balanced 3-phase load has VL = 400V, IL = 10A, and power factor 0.8. Find the real power.",
+    steps: ["P = √3 × VL × IL × cos(φ)", "P = 1.732 × 400 × 10 × 0.8", "P ≈ 5546 W"]
   },
+  faq: "The √3 factor appears because of the phase relationship between the three lines in a balanced three-phase system — it accounts for the geometric relationship between line and phase quantities.",},
   {
     id: 'power-factor',
     category: 'power',
@@ -543,7 +576,11 @@ export const formulas = [
     },
     tags: ['power', 'transformer'],
     pro: false,
+  worked_example: {
+    problem: "A transformer has 1000 primary turns and 100 secondary turns, with 230V on the primary. Find the secondary voltage.",
+    steps: ["Vs = Vp × (Ns / Np)", "Vs = 230 × (100 / 1000)", "Vs = 230 × 0.1 = 23V"]
   },
+  faq: "This is a step-down transformer because Ns < Np, meaning secondary voltage is lower than primary. If Ns > Np instead, it would be a step-up transformer.",},
 
   // ─── SIGNALS & SYSTEMS ────────────────────────────────────────
   {
@@ -564,7 +601,11 @@ export const formulas = [
     },
     tags: ['signals', 'decibel'],
     pro: false,
+  worked_example: {
+    problem: "An amplifier has Vin = 0.1V and Vout = 1V. Find the gain in dB.",
+    steps: ["dB = 20 × log₁₀(Vout / Vin)", "dB = 20 × log₁₀(1 / 0.1)", "dB = 20 × log₁₀(10) = 20 dB"]
   },
+  faq: "Every 20dB increase represents a 10× increase in voltage gain. So 40dB means 100× gain, and 60dB means 1000× — the scale is logarithmic, not linear.",},
   {
     id: 'decibel-power',
     category: 'signals',
@@ -1431,7 +1472,11 @@ export const formulas = [
     },
     tags: ['induction-motor', 'speed', 'ac-machine'],
     pro: false,
+  worked_example: {
+    problem: "A motor runs on a 50Hz supply with 4 poles. Find the synchronous speed.",
+    steps: ["Ns = 120 × f / P", "Ns = 120 × 50 / 4", "Ns = 1500 RPM"]
   },
+  faq: "Synchronous speed depends only on supply frequency and pole count — it has nothing to do with motor load. Increasing the load changes the rotor's actual speed, not the synchronous speed itself.",},
   {
     id: 'motor-slip',
     category: 'acmachine',
@@ -1450,7 +1495,11 @@ export const formulas = [
     },
     tags: ['induction-motor', 'slip'],
     pro: false,
+  worked_example: {
+    problem: "An induction motor has a synchronous speed of 1500 RPM and runs at 1450 RPM. Find the slip.",
+    steps: ["s = (Ns - Nr) / Ns", "s = (1500 - 1450) / 1500", "s = 50 / 1500 = 0.033 = 3.3%"]
   },
+  faq: "Slip can never be zero in a running induction motor. Without relative motion between the rotor and the magnetic field, no current is induced in the rotor, so no torque is produced.",},
   {
     id: 'rotor-frequency',
     category: 'acmachine',
