@@ -25,6 +25,9 @@ export default function Navbar() {
           <Link href="/formulas" className="text-sm text-gray-400 hover:text-white transition-colors">
             Formulas
           </Link>
+          <Link href="/notebook" className="text-sm text-gray-400 hover:text-white transition-colors">
+           Notebook
+          </Link>
           <Link href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">
             Pricing
           </Link>
